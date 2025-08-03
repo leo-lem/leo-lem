@@ -1,4 +1,4 @@
-<h1>Hey there, I'm Leo! <img src="wave.svg" height="30" width="30" /> </h1>
+<h1>Hey there, I'm Leo! <img src="wave.svg" /> </h1>
 
 I'm a software engineer and computer science student with a focus on building thoughtful developer tools and small, well-crafted apps. Currently freelancing, exploring Firebase/iOS integrations, and occasionally contributing to open source.
 
