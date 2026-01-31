@@ -1,0 +1,25 @@
+name: CodeQL (shared)
+
+on:
+  workflow_call:
+    inputs:
+      languages:
+        required: false
+        type: string
+        default: javascript-typescript,actions
+
+permissions:
+  security-events: write
+  actions: read
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: github/codeql-action/init@v4
+        with:
+          languages: ${{ inputs.languages }}
+      - uses: github/codeql-action/autobuild@v4
+      - uses: github/codeql-action/analyze@v4
