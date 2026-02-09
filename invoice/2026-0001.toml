@@ -1,0 +1,19 @@
+date = "2026-02-09"
+service_period = "2026-01-15 to 2026-01-31"
+
+[client]
+name = "Client Company GmbH"
+address1 = "Client Street 1"
+address2 = "10115 Berlin"
+
+[[items]]
+description = "Software development"
+quantity = 10
+unit = "hours"
+unit_price = 85.00
+
+[[items]]
+description = "Technical consulting"
+quantity = 2
+unit = "hours"
+unit_price = 95.00
