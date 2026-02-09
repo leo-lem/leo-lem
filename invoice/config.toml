@@ -1,0 +1,14 @@
+[seller]
+name = "Leopold Lemmermann"
+address1 = "Street 12"
+address2 = "12345 Hamburg"
+email = "leo@example.com"
+website = "leolem.dev"
+tax_number = "1234-123"
+
+[payment]
+iban = "DE00 0000 0000 0000 0000 00"
+bic = "XXXXXXXXXXX"
+bank = "Your Bank"
+terms_days = 14
+currency = "EUR"
