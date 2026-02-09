@@ -215,7 +215,6 @@ def main() -> int:
         "IBAN": esc(iban),
         "BIC": esc(str(payment.get("bic", ""))),
         "BANK": esc(str(payment.get("bank", ""))),
-        "NOTES": notes,
 
         "QR_SVG": qr_svg,
         "KLEINUNTERNEHMER_NOTE": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
