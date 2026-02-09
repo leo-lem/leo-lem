@@ -10,8 +10,11 @@ from pathlib import Path
 import tomllib
 
 
-def money(x: Decimal) -> str:
+def money_qr(x: Decimal) -> str:
     return f"{x.quantize(Decimal('0.01'), rounding=ROUND_HALF_UP):.2f}"
+
+def money_de(x: Decimal) -> str:
+    return money_qr(x).replace(".", ",")
 
 
 def esc(s: str) -> str:
@@ -29,32 +32,29 @@ def load_toml(path: Path) -> dict:
         return tomllib.load(f)
 
 
-def default_config_candidates() -> list[Path]:
-    home = Path.home()
-    icloud = home / "Library/Mobile Documents/com~apple~CloudDocs/Invoices/config.toml"
-    return [
-        Path.cwd() / "config.toml",
-        home / ".config/invoice/config.toml",
-        icloud,
-    ]
-
-
 def resolve_config(cli_config: str | None) -> Path:
-    env = os.environ.get("INVOICE_CONFIG")
     if cli_config:
         p = Path(cli_config).expanduser()
         if p.exists():
             return p
         raise FileNotFoundError(f"Config not found: {p}")
+
+    env = os.environ.get("INVOICE_CONFIG")
     if env:
         p = Path(env).expanduser()
         if p.exists():
             return p
         raise FileNotFoundError(f"Config not found: {p}")
-    for c in default_config_candidates():
-        if c.exists():
-            return c
-    raise FileNotFoundError("No config.toml found. Provide --config or set INVOICE_CONFIG.")
+
+    candidates = [
+        Path.cwd() / "config.toml",
+        Path.home() / ".config/invoice/config.toml",
+    ]
+    for p in candidates:
+        if p.exists():
+            return p
+
+    raise FileNotFoundError("No config.toml found. Use --config or set INVOICE_CONFIG.")
 
 
 def parse_date(s: str) -> dt.date:
@@ -69,31 +69,29 @@ def epc_qr_payload(
     remittance: str,
     bic: str | None = None,
 ) -> str:
-    # EPC069-12 "SCT" payment QR payload.
-    lines = [
-        "BCD",
-        "002",  # version
-        "1",    # charset (1 = UTF-8)
-        "SCT",
-        (bic or ""),
-        name,
-        iban.replace(" ", ""),
-        f"EUR{money(amount)}",
-        "",          # purpose
-        remittance,  # remittance info
-        "",          # info
-    ]
-    return "\n".join(lines)
+    return "\n".join(
+        [
+            "BCD",
+            "002",
+            "1",
+            "SCT",
+            (bic or ""),
+            name,
+            iban.replace(" ", ""),
+            f"EUR{money_qr(amount)}",
+            "",
+            remittance,
+            "",
+        ]
+    )
 
 
-def try_make_qr_svg(payload: str) -> str | None:
-    # Hard default: QR on. If segno isn't installed, we just omit the image.
+def try_make_qr_svg(payload: str) -> str:
     try:
         import segno  # type: ignore
     except Exception:
-        return None
-    qr = segno.make(payload, error="M")
-    return qr.svg_inline(scale=3, omitsize=True)
+        return ""
+    return segno.make(payload, error="M").svg_inline(scale=3, omitsize=True)
 
 
 def render_html(template: str, data: dict[str, str]) -> str:
@@ -104,14 +102,10 @@ def render_html(template: str, data: dict[str, str]) -> str:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(
-        prog="invoice",
-        description="Generate invoice HTML from TOML files (QR default).",
-    )
+    ap = argparse.ArgumentParser(prog="invoice")
     ap.add_argument("invoice_toml", help="Path to invoice TOML (e.g. data/2026-0001.toml)")
-    ap.add_argument("--config", help="Path to config.toml (otherwise auto-detected)")
+    ap.add_argument("--config", help="Path to config.toml")
     ap.add_argument("--out", help="Output directory (default: alongside invoice file in .out)")
-    ap.add_argument("--open", action="store_true", help="Open generated HTML in browser (macOS open)")
     args = ap.parse_args()
 
     invoice_path = Path(args.invoice_toml).expanduser().resolve()
@@ -119,29 +113,26 @@ def main() -> int:
         print(f"Invoice file not found: {invoice_path}", file=sys.stderr)
         return 2
 
-    invoice_no = invoice_path.stem  # <-- derived from filename
-
+    invoice_no = invoice_path.stem
     config_path = resolve_config(args.config)
+
     cfg = load_toml(config_path)
     inv = load_toml(invoice_path)
 
     repo_dir = Path(__file__).resolve().parent
-    template_path = repo_dir / "template.html"
-    template = template_path.read_text(encoding="utf-8")
+    template = (repo_dir / "template.html").read_text(encoding="utf-8")
 
     seller = cfg["seller"]
-    payment = cfg.get("payment", {})
+    payment = cfg["payment"]
 
-    terms_days = int(payment.get("terms_days", 14))
-    currency = str(payment.get("currency", "EUR"))
-
-    # New schema: invoice date is stored under "date"
     if "date" not in inv:
-        print("Invoice TOML missing required field: date = \"YYYY-MM-DD\"", file=sys.stderr)
+        print('Invoice TOML missing required field: date = "YYYY-MM-DD"', file=sys.stderr)
         return 2
 
     invoice_date = parse_date(str(inv["date"]))
+    terms_days = int(payment.get("terms_days", 14))
     due_date = invoice_date + dt.timedelta(days=terms_days)
+    currency = str(payment.get("currency", "EUR"))
 
     client = inv["client"]
     items = inv.get("items", [])
@@ -163,15 +154,11 @@ def main() -> int:
             f"<td>{desc}</td>"
             f"<td class='num'>{esc(str(qty))}</td>"
             f"<td>{unit}</td>"
-            f"<td class='num'>{money(unit_price)}</td>"
-            f"<td class='num'>{money(line_total)}</td>"
+            f"<td class='num'>{money_de(unit_price)}</td>"
+            f"<td class='num'>{money_de(line_total)}</td>"
             "</tr>"
         )
-    items_html = "\n".join(rows)
 
-    service_period = esc(str(inv.get("service_period", "")))
-
-    # QR always on: remittance from invoice_no, amount from total
     iban = str(payment.get("iban", "")).strip()
     if not iban:
         print("Config missing required field: [payment].iban", file=sys.stderr)
@@ -182,10 +169,10 @@ def main() -> int:
         name=str(seller["name"]),
         iban=iban,
         amount=total,
-        remittance=f"Invoice {invoice_no}",
+        remittance=invoice_no,
         bic=bic,
     )
-    qr_svg = try_make_qr_svg(payload) or ""
+    qr_svg = try_make_qr_svg(payload)
 
     out_dir = Path(args.out).expanduser().resolve() if args.out else (invoice_path.parent / ".out")
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -195,7 +182,7 @@ def main() -> int:
         "INVOICE_NO": esc(invoice_no),
         "INVOICE_DATE": esc(invoice_date.isoformat()),
         "DUE_DATE": esc(due_date.isoformat()),
-        "SERVICE_PERIOD": service_period,
+        "SERVICE_PERIOD": esc(str(inv.get("service_period", ""))),
 
         "SELLER_NAME": esc(str(seller["name"])),
         "SELLER_ADDRESS1": esc(str(seller["address1"])),
@@ -208,8 +195,9 @@ def main() -> int:
         "CLIENT_ADDRESS1": esc(str(client["address1"])),
         "CLIENT_ADDRESS2": esc(str(client["address2"])),
 
-        "ITEM_ROWS": items_html,
-        "TOTAL": esc(money(total)),
+        "ITEM_ROWS": "\n".join(rows),
+        "TOTAL": esc(money_de(total)),
+        "VAT": esc(money_de(Decimal("0.00"))),
         "CURRENCY": esc(currency),
 
         "IBAN": esc(iban),
@@ -220,17 +208,10 @@ def main() -> int:
         "KLEINUNTERNEHMER_NOTE": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
     }
 
-    html = render_html(template, data)
-    html_out.write_text(html, encoding="utf-8")
+    html_out.write_text(render_html(template, data), encoding="utf-8")
+    print(html_out)
 
-    print(f"Config:  {config_path}")
-    print(f"Invoice: {invoice_path}")
-    print(f"Invoice#: {invoice_no}")
-    print(f"Output:  {html_out}")
-    if not qr_svg:
-        print("Note: QR not embedded (install `segno` to include QR SVG).")
-
-    if args.open and sys.platform == "darwin":
+    if sys.platform == "darwin":
         os.system(f"open {str(html_out)!r}")
 
     return 0
