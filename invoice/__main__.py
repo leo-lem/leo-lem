@@ -170,7 +170,6 @@ def main() -> int:
     items_html = "\n".join(rows)
 
     service_period = esc(str(inv.get("service_period", "")))
-    notes = esc(str(inv.get("notes", "")))
 
     # QR always on: remittance from invoice_no, amount from total
     iban = str(payment.get("iban", "")).strip()

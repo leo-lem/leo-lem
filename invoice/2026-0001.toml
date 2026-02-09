@@ -1,6 +1,5 @@
 date = "2026-02-09"
 service_period = "2026-01-15 to 2026-01-31"
-notes = "Thank you."
 
 [client]
 name = "Client Company GmbH"
