@@ -2,7 +2,7 @@
 
 I'm a software engineer and computer science master's student, focused on building reliable backend systems, clean architectures, and well-crafted products.
 
-<a href="https://leolem.dev"><img src="https://img.shields.io/website?url=https%3A%2F%2Fleolem.dev"></a>
+<a href="https://leolem.dev/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fleolem.dev/"></a>
 <img src="https://komarev.com/ghpvc/?username=leo-lem&color=yellowgreen&style=flat" />
 
 <details>
