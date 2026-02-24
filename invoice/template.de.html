@@ -172,7 +172,7 @@
         <div><span class="muted">Rechnungsnummer:</span> <strong>{{INVOICE_NO}}</strong></div>
         <div><span class="muted">Rechnungsdatum:</span> {{INVOICE_DATE}}</div>
         <div><span class="muted">Fällig am:</span> {{DUE_DATE}}</div>
-        <div><span class="muted">Leistungszeitraum:</span> {{SERVICE_PERIOD}}</div>
+        {{SERVICE_PERIOD_LINE}}
       </div>
     </header>
 
@@ -202,7 +202,7 @@
       <div class="totals-grid">
         <div class="legal-block muted small">
           <div>Steuernummer: {{SELLER_TAXNO}}</div>
-          <div>Gemäß §19 UStG wird keine Umsatzsteuer berechnet.</div>
+          <div>{{KLEINUNTERNEHMER_NOTE}}</div>
         </div>
 
         <div class="totals-box">
@@ -222,7 +222,7 @@
       <div>
         <div><strong>Zahlung</strong></div>
         <div class="muted small">Überweisung</div>
-        <div class="muted small">Name: {{SELLER_NAME}}</div>
+        <div class="muted small">Empfänger: {{SELLER_NAME}}</div>
         <div class="muted small">IBAN: {{IBAN}}</div>
         <div class="muted small">BIC: {{BIC}}</div>
         <div class="muted small">Bank: {{BANK}}</div>

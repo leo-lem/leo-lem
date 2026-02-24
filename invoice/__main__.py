@@ -16,6 +16,15 @@ def money_qr(x: Decimal) -> str:
 def money_de(x: Decimal) -> str:
     return money_qr(x).replace(".", ",")
 
+def money_en(x: Decimal) -> str:
+    return money_qr(x)
+
+def date_de(d: dt.date) -> str:
+    return d.strftime("%d.%m.%Y")
+
+def date_en(d: dt.date) -> str:
+    return d.strftime("%Y-%m-%d")
+
 
 def esc(s: str) -> str:
     return (
@@ -119,8 +128,29 @@ def main() -> int:
     cfg = load_toml(config_path)
     inv = load_toml(invoice_path)
 
+    lang = str(inv.get("lang", "de")).lower()
+    if lang not in {"de", "en"}:
+        lang = "de"
+
     repo_dir = Path(__file__).resolve().parent
-    template = (repo_dir / "template.html").read_text(encoding="utf-8")
+    template_name = f"template.{lang}.html"
+    template = (repo_dir / template_name).read_text(encoding="utf-8")
+
+    money_fmt = money_de if lang == "de" else money_en
+    date_fmt = date_de if lang == "de" else date_en
+
+    labels = {
+        "de": {
+            "service_period": "Leistungszeitraum",
+            "klein": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
+            "unit_hours": "Std.",
+        },
+        "en": {
+            "service_period": "Service period",
+            "klein": "No VAT charged under §19 UStG (small business regulation).",
+            "unit_hours": "hours",
+        },
+    }[lang]
 
     seller = cfg["seller"]
     payment = cfg["payment"]
@@ -145,7 +175,11 @@ def main() -> int:
     for it in items:
         desc = esc(str(it["description"]))
         qty = Decimal(str(it.get("quantity", 1)))
-        unit = esc(str(it.get("unit", "")))
+        unit_raw = str(it.get("unit", "")).strip()
+        if unit_raw.lower() in {"h", "hour", "hours", "std", "std.", "stunde", "stunden"}:
+            unit = esc(labels["unit_hours"])
+        else:
+            unit = esc(unit_raw)
         unit_price = Decimal(str(it["unit_price"]))
         line_total = (qty * unit_price).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
         total += line_total
@@ -154,8 +188,8 @@ def main() -> int:
             f"<td>{desc}</td>"
             f"<td class='num'>{esc(str(qty))}</td>"
             f"<td>{unit}</td>"
-            f"<td class='num'>{money_de(unit_price)}</td>"
-            f"<td class='num'>{money_de(line_total)}</td>"
+            f"<td class='num'>{money_fmt(unit_price)}</td>"
+            f"<td class='num'>{money_fmt(line_total)}</td>"
             "</tr>"
         )
 
@@ -178,11 +212,18 @@ def main() -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     html_out = out_dir / f"{invoice_no}.html"
 
+    sp = str(inv.get("service_period", "")).strip()
+    service_period_line = (
+        f"<div><span class='muted'>{esc(labels['service_period'])}:</span> {esc(sp)}</div>"
+        if sp
+        else ""
+    )
+
     data = {
         "INVOICE_NO": esc(invoice_no),
-        "INVOICE_DATE": esc(invoice_date.isoformat()),
-        "DUE_DATE": esc(due_date.isoformat()),
-        "SERVICE_PERIOD": esc(str(inv.get("service_period", ""))),
+        "INVOICE_DATE": esc(date_fmt(invoice_date)),
+"DUE_DATE": esc(date_fmt(due_date)),
+        "SERVICE_PERIOD_LINE": service_period_line,
 
         "SELLER_NAME": esc(str(seller["name"])),
         "SELLER_ADDRESS1": esc(str(seller["address1"])),
@@ -196,8 +237,8 @@ def main() -> int:
         "CLIENT_ADDRESS2": esc(str(client["address2"])),
 
         "ITEM_ROWS": "\n".join(rows),
-        "TOTAL": esc(money_de(total)),
-        "VAT": esc(money_de(Decimal("0.00"))),
+        "TOTAL": esc(money_fmt(total)),
+        "VAT": esc(money_fmt(Decimal("0.00"))),
         "CURRENCY": esc(currency),
 
         "IBAN": esc(iban),
@@ -205,7 +246,7 @@ def main() -> int:
         "BANK": esc(str(payment.get("bank", ""))),
 
         "QR_SVG": qr_svg,
-        "KLEINUNTERNEHMER_NOTE": "Gemäß §19 UStG wird keine Umsatzsteuer berechnet.",
+        "KLEINUNTERNEHMER_NOTE": esc(labels["klein"]),
     }
 
     html_out.write_text(render_html(template, data), encoding="utf-8")
