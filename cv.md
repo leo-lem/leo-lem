@@ -1,6 +1,6 @@
 # Leopold Lemmermann
 Software Engineer  
-Hamburg, Germany | Remote EU  
+Hamburg, Germany | Remote EU | Open to Relocation
 hey@leolem.dev  
 https://leolem.dev  
 https://github.com/leo-lem
