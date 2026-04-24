@@ -10,7 +10,7 @@ Backend-oriented Product Engineer with experience designing and building cloud-n
 
 ## Experience
 
-### Software Engineer (Working Student)  
+### Software Engineer  
 **Capgemini** — Hamburg, Germany  
 December 2023 – May 2026
 - Built an internal product for analysing sustainability-related IT metrics.
@@ -19,7 +19,7 @@ December 2023 – May 2026
 - Used Java (Quarkus), PostgreSQL, Kubernetes, Terraform, and GCP in a production environment.
 - Built CI/CD pipelines and containerised development environments, supporting reliable deployment and reproducible local development.
 
-### Web Developer / Quality Assurance Engineer (Working Student)  
+### Web Developer / Quality Assurance Engineer  
 **MaibornWolff GmbH** — Hamburg, Germany  
 March 2022 – December 2022
 - Worked on web-based projects across QA and development.
