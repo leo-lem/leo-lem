@@ -1,6 +1,6 @@
 # Leopold Lemmermann
-Product Engineer (Backend & Infrastructure)
-Hamburg, Germany | Remote EU | Open to Relocation
+Product Engineer (Backend & Infrastructure)  
+Hamburg, Germany | Remote EU | Open to Relocation  
 hey@leolem.dev  
 https://leolem.dev  
 https://github.com/leo-lem
