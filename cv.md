@@ -1,9 +1,9 @@
 # Leopold Lemmermann
-Product Engineer (Backend & Infrastructure)  
+**Product Engineer (Backend & Infrastructure)**  
+
 Hamburg, Germany | Remote EU | Open to Relocation  
 hey@leolem.dev  
-https://leolem.dev  
-https://github.com/leo-lem
+[leolem.dev](https://leolem.dev/) | [github.com/leo-lem](https://github.com/leo-lem) | [linkedin.com/in/leopoldlemmermann](https://linkedin.com/in/leopoldlemmermann)
 
 ## Profile
 Backend-oriented Product Engineer with experience designing and building cloud-native systems, with a focus on backend services, infrastructure, and early-stage architecture. Takes ownership across development, deployment, and operation, and works pragmatically to balance system design with product needs in evolving environments.
@@ -34,8 +34,8 @@ November 2016 – October 2020
 ## Projects
 
 ### [Sustainable IT Dashboard](https://leolem.dev/portfolio/sid/)
-- Cloud-native backend system for processing and analysing sustainability-related IT metrics.
-- Designed and built core backend services, data pipelines, and infrastructure in an early-stage production system.
+- Cloud-native backend system for processing and analysing sustainability-related IT metrics.  
+- Designed and built core backend services, data pipelines, and infrastructure in an early-stage production system.  
 - Worked with Kubernetes, Terraform, CI/CD, and GCP.
 
 ### [Smokes](https://leolem.dev/portfolio/smokes/)
@@ -51,15 +51,25 @@ November 2016 – October 2020
 Exchange semester: University of Jyväskylä, Finland (2025)
 
 ### Bachelor of Science, Economics  
-**Albert-Ludwigs-Universität Freiburg**  
+**Albert-Ludwigs-University Freiburg**  
 2019 – 2021
 
 ## Skills
-**Backend & Systems** - Java (Quarkus), SQL, API design
-**Infrastructure & DevOps** - Kubernetes, Docker, Terraform, CI/CD, GCP
-**Languages** - Java, Python, TypeScript, Swift
-**Frontend & Mobile** - React, SwiftUI
-**Data** - PostgreSQL, Firebase
+
+**Backend & Systems**  
+Java (Quarkus), SQL, API design
+
+**Infrastructure & DevOps**  
+Kubernetes, Docker, Terraform, CI/CD, GCP
+
+**Frontend & Mobile**  
+React, SwiftUI
+
+**Data**  
+PostgreSQL, Firebase
+
+**Languages**  
+Python, TypeScript, Swift
 
 ## Languages
 German (native)  
