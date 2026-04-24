@@ -1,30 +1,29 @@
 # Leopold Lemmermann
-Software Engineer  
+Product Engineer (Backend & Infrastructure)
 Hamburg, Germany | Remote EU | Open to Relocation
 hey@leolem.dev  
 https://leolem.dev  
 https://github.com/leo-lem
 
 ## Profile
-Backend-oriented software engineer with experience in cloud-native systems, early architecture decisions, and DevOps. Comfortable across Swift, TypeScript, and Python, with a focus on maintainable systems, pragmatic tradeoffs, and end-to-end ownership. Currently completing a Master’s in Computer Science after transitioning from an Economics background.
+Backend-oriented Product Engineer with experience designing and building cloud-native systems, with a focus on backend services, infrastructure, and early-stage architecture. Takes ownership across development, deployment, and operation, and works pragmatically to balance system design with product needs in evolving environments.
 
 ## Experience
 
 ### Software Engineer (Working Student)  
 **Capgemini** — Hamburg, Germany  
-December 2023 – Present
-- Worked on a cloud-native internal product focused on sustainability-related IT metrics.
-- Designed and implemented large parts of the backend and infrastructure in an early project phase as the sole engineer.
-- Contributed to backend architecture, data modelling, and infrastructure as the team grew and architectural responsibility became shared.
-- Worked extensively with Java, Quarkus, PostgreSQL, Kubernetes, Terraform, and Google Cloud Platform.
-- Built and maintained CI/CD pipelines and containerised development environments in a team setting.
+December 2023 – May 2026
+- Built an internal product for analysing sustainability-related IT metrics.
+- Owned backend and infrastructure setup in the early phase, designing services, data models, and deployment architecture as the initial engineer.
+- Defined and evolved backend architecture, data models, and infrastructure as the system scaled and additional engineers joined.
+- Used Java (Quarkus), PostgreSQL, Kubernetes, Terraform, and GCP in a production environment.
+- Built CI/CD pipelines and containerised development environments, supporting reliable deployment and reproducible local development.
 
 ### Web Developer / Quality Assurance Engineer (Working Student)  
 **MaibornWolff GmbH** — Hamburg, Germany  
 March 2022 – December 2022
-- Contributed to web-based projects as both QA and Web Developer.
-- Worked across testing, implementation, and maintenance tasks in client-facing environments.
-- Gained early professional experience in software delivery processes and collaboration in cross-functional teams.
+- Worked on web-based projects across QA and development.
+- Contributed to testing, implementation, and maintenance in production environments.
 
 ### Working Student / Assistant  
 **Mazars** — Hamburg, Germany  
@@ -35,19 +34,14 @@ November 2016 – October 2020
 ## Projects
 
 ### [Sustainable IT Dashboard](https://leolem.dev/portfolio/sid/)
-- Cloud-native backend system for monitoring sustainability-related IT metrics.
-- Designed and implemented core backend services and infrastructure in an early project phase.
-- Worked with Kubernetes, Terraform, CI/CD pipelines, and GCP in a production environment.
+- Cloud-native backend system for processing and analysing sustainability-related IT metrics.
+- Designed and built core backend services, data pipelines, and infrastructure in an early-stage production system.
+- Worked with Kubernetes, Terraform, CI/CD, and GCP.
 
 ### [Smokes](https://leolem.dev/portfolio/smokes/)
-- Privacy-conscious iOS habit tracker designed and shipped end to end.
-- Iterated on architecture decisions, moving from an early backend prototype to a local-first design.
-- Published on the App Store and maintained over time.
-
-### [Almost?](https://leolem.dev/portfolio/almost/)
-- Reflective iOS journaling app designed and built end to end.
-- Firebase-backed SwiftUI application with focus on simplicity, reliability, and clean UX.
-- Live on the App Store with a supporting marketing site.
+- Privacy-focused iOS habit tracker, designed and shipped end-to-end.
+- Iterated on system architecture, moving from a backend-based approach to a local-first design.
+- Published and maintained on the App Store.
 
 ## Education
 
@@ -61,15 +55,11 @@ Exchange semester: University of Jyväskylä, Finland (2025)
 2019 – 2021
 
 ## Skills
-Backend systems and APIs  
-Cloud infrastructure and DevOps  
-CI/CD, containerisation, Kubernetes  
-
-Java, SQL  
-Python, TypeScript  
-Swift, SwiftUI  
-Firebase, PostgreSQL  
-Docker, Terraform
+**Backend & Systems** - Java (Quarkus), SQL, API design
+**Infrastructure & DevOps** - Kubernetes, Docker, Terraform, CI/CD, GCP
+**Languages** - Java, Python, TypeScript, Swift
+**Frontend & Mobile** - React, SwiftUI
+**Data** - PostgreSQL, Firebase
 
 ## Languages
 German (native)  
