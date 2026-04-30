@@ -10,26 +10,35 @@ Backend-oriented Product Engineer with experience designing and building cloud-n
 
 ## Experience
 
-### Software Engineer  
+### Freelance Software Engineer
+**Self-employed** — Remote
+September 2025 – Present
+- Improved backend and infrastructure for client projects by optimizing databases, implementing backup strategies, and streamlining deployment workflows.
+- Developed and managed scripts and tools to ensure consistent operations and sustainability over time.
+- Led end-to-end execution of tasks from defining problems to final delivery.
+
+### Software Engineer
 **Capgemini** — Hamburg, Germany  
 December 2023 – May 2026
-- Built an internal product for analysing sustainability-related IT metrics.
-- Owned backend and infrastructure setup in the early phase, designing services, data models, and deployment architecture as the initial engineer.
-- Defined and evolved backend architecture, data models, and infrastructure as the system scaled and additional engineers joined.
-- Used Java (Quarkus), PostgreSQL, Kubernetes, Terraform, and GCP in a production environment.
-- Built CI/CD pipelines and containerised development environments, supporting reliable deployment and reproducible local development.
+- Developed an internal product to analyze sustainability-related IT metrics.
+- Led backend and infrastructure setup in the early phase, creating services, data models, and deployment architecture as the first engineer.
+- Defined and improved backend architecture, data models, and infrastructure during system growth and with new team members.
+- Utilized Java (Quarkus), PostgreSQL, Kubernetes, Terraform, and GCP in production.
+- Established CI/CD pipelines and containerized development environments for dependable deployment and consistent local development.
 
 ### Web Developer / Quality Assurance Engineer  
 **MaibornWolff GmbH** — Hamburg, Germany  
 March 2022 – December 2022
-- Worked on web-based projects across QA and development.
-- Contributed to testing, implementation, and maintenance in production environments.
+- Collaborated on web-based projects involving quality assurance and development.
+- Played a key role in testing, implementation, and maintenance within production environments.
+- Worked with developers and stakeholders to identify issues, reproduce bugs, and improve overall system reliability.
 
 ### Working Student / Assistant  
 **Mazars** — Hamburg, Germany  
 November 2016 – October 2020
-- Supported teams in tax and audit-related workflows alongside academic studies.
-- Gained early experience in structured, process-driven professional environments.
+- Supported tax and audit teams while pursuing academic studies.
+- Acquired early exposure to structured and process-driven work environments.
+- Worked with structured datasets and documentation, supporting accuracy and consistency in reporting processes.
 
 ## Projects
 
