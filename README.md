@@ -1,6 +1,6 @@
 <h1>Hey there, I'm Leo! <img src="wave.svg" /> </h1>
 
-I turn rough ideas into usable software and keep it running. Backend-first engineering with pragmatic architecture and infrastructure ownership, focused on production reliability.
+Software engineer working across backend systems, infrastructure, and production delivery.
 
 <a href="https://leolem.dev/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fleolem.dev/"></a>
 <img src="https://komarev.com/ghpvc/?username=leo-lem&color=yellowgreen&style=flat" />
@@ -8,8 +8,9 @@ I turn rough ideas into usable software and keep it running. Backend-first engin
 <details>
 <summary><strong>Engineering Profile</strong></summary>
 
-I’m a product engineer with a backend-first focus, building real systems from idea to production. I enjoy turning rough ideas into usable software, making early architecture decisions that hold up, and shipping things that stay reliable in production.
+I’m a software engineer focused on building systems that are useful, maintainable, and reliable in production. My strongest experience is around backend services, infrastructure, CI/CD, deployments, and the operational workflows that keep software running beyond the first release.
 
-My default mode is pragmatic engineering: clear boundaries, maintainability over cleverness, and simplicity over fragile complexity. I’m comfortable owning the infrastructure around what I build, including CI/CD, deployments, and production operations, because reliability is part of the product.
+I like working close to the full delivery path: understanding the problem, shaping the technical approach, implementing the system, and making sure it can be operated and evolved by a team. I care about clear boundaries, pragmatic architecture, and avoiding complexity that looks clever but turns brittle in practice.
 
-I work across stacks and adapt quickly when the product demands it, with experience in Swift, TypeScript, Python, and Java. I’m looking for product-focused roles in small to mid-sized teams with high ownership and close product collaboration, with room to grow architecture responsibility over time. I transitioned from Economics to Computer Science, and I bring that analytical background into how I reason about systems and tradeoffs.
+My background spans backend, infrastructure, QA, freelance client work, and product-oriented side projects. I’ve worked with Java, TypeScript, Python, Swift, Kubernetes, Terraform, Docker, PostgreSQL, and cloud deployment workflows. I originally studied Economics before moving into Computer Science, and I still tend to think about systems through tradeoffs, incentives, and long-term maintenance.
+</details>
