@@ -155,11 +155,18 @@ def main() -> int:
     seller = cfg["seller"]
     payment = cfg["payment"]
 
-    if "date" not in inv:
-        print('Invoice TOML missing required field: date = "YYYY-MM-DD"', file=sys.stderr)
-        return 2
-
-    invoice_date = parse_date(str(inv["date"]))
+    today = dt.date.today()
+    if "date" in inv:
+        invoice_date = parse_date(str(inv["date"]))
+        age = (today - invoice_date).days
+        if age > 3:
+            print(
+                f"WARNING: invoice date {invoice_date.isoformat()} is {age} days in the past "
+                f"(today is {today.isoformat()}). Remove `date` from the TOML to use today.",
+                file=sys.stderr,
+            )
+    else:
+        invoice_date = today
     terms_days = int(payment.get("terms_days", 14))
     due_date = invoice_date + dt.timedelta(days=terms_days)
     currency = str(payment.get("currency", "EUR"))
