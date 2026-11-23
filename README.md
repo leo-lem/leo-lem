@@ -1,6 +1,6 @@
 <a href="https://leolem.dev"><img src="banner.jpg" alt="A hexagonal fractal in blue and violet, the artwork of leolem.dev" width="100%" /></a>
 
-# Pragmatic Engineer Based in Hamburg
+# Pragmatic Engineer
 
 **Small Teams, Long Horizons, Real Automation.**
 
