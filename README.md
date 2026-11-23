@@ -1,16 +1,9 @@
-<h1>Hey there, I'm Leo! <img src="wave.svg" /> </h1>
+<a href="https://leolem.dev"><img src="banner.jpg" alt="A hexagonal fractal in blue and violet, the artwork of leolem.dev" width="100%" /></a>
 
-I build usable software and the systems around it: backend services, infrastructure, delivery workflows, and production operations.
+# Pragmatic Engineer Based in Hamburg
 
-<a href="https://leolem.dev/"><img src="https://img.shields.io/website?url=https%3A%2F%2Fleolem.dev/"></a>
-<img src="https://komarev.com/ghpvc/?username=leo-lem&color=yellowgreen&style=flat" />
+**Small Teams, Long Horizons, Real Automation.**
 
-<details>
-<summary><strong>Engineering Profile</strong></summary>
+I work on what lets small teams run like big ones: infrastructure, automation and AI agents, built for the long run. I write about that and whatever else I'm into.
 
-I’m a software engineer focused on building real systems from rough ideas to production. My strongest work sits around backend services, infrastructure, CI/CD, deployments, and the operational workflows that keep software maintainable after the first release.
-
-My default mode is pragmatic engineering: clear boundaries, maintainability over cleverness, and simplicity over fragile complexity. I like working close to the full delivery path, from understanding the problem and shaping the technical approach to implementing, deploying, and operating the system.
-
-I work across stacks when needed, with experience in Java, TypeScript, Python, Swift, Kubernetes, Terraform, Docker, PostgreSQL, and cloud deployment workflows. I originally studied Economics before moving into Computer Science, and I still tend to think about systems through tradeoffs, incentives, and long-term maintenance.
-</details>
+**[leolem.dev →](https://leolem.dev)**
