@@ -5,7 +5,7 @@ I work on what lets small teams run like big ones: infrastructure, automation an
 #### Latest writing
 
 <!-- articles:start -->
-- [Shipping Something That Isn't Useful, Revisited](https://leolem.dev/blog/building/shipping-something-not-useful-revisited/)
-- [What Minimal Structure at Work Actually Requires](https://leolem.dev/blog/systems/what-minimal-structure-at-work-actually-requires/)
-- [Revisiting Small Systems, Long Horizons](https://leolem.dev/blog/systems/revisiting-small-systems-long-horizons/)
+- [Shipping Something That Isn't Useful, Revisited](https://leolem.dev/shipping-something-not-useful-revisited/)
+- [What Minimal Structure at Work Actually Requires](https://leolem.dev/what-minimal-structure-at-work-actually-requires/)
+- [Revisiting Small Systems, Long Horizons](https://leolem.dev/revisiting-small-systems-long-horizons/)
 <!-- articles:end -->
